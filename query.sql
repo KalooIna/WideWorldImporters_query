@@ -25,3 +25,13 @@ select SIL.StockItemID , avg( SIL.UnitPRice )
 from Sales.InvoiceLines as SIL
 group by SIL.StockItemID
 having avg( SIL.LineProfit ) > 150
+
+/* 6 . Complete address of client with DeliveryAddress lines 1 and 2 and PostalAddress */
+select SC.CustomerID , SC.CustomerName , concat( SC.DeliveryAddressLine1 , SC.DeliveryAddressLine2 , ' ' , SC.DeliveryPostalCode )
+from Sales.Customers as SC
+
+/* 7 . Fetch all records for stock item names starting with "USB".  */
+select *
+from Warehouse.StockItems as WSI
+where upper( WSI.StockItemName ) like 'USB%'
+
